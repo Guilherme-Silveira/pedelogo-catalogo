@@ -1,8 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api
+  name: api-deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: api
@@ -37,4 +38,4 @@ spec:
   ports:
   - port: 80
     targetPort: 80
-  type: LoadBalancer
+  type: ClusterIP
