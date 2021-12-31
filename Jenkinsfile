@@ -25,11 +25,13 @@ pipeline {
             }
         }
         stage('Deploy Kubernetes') {
-            agent any
-            steps {
-                script {
-                    kubernetesDeploy(configs: "mongo.yaml", kubeconfigId: "kubernetes")
+            agent {
+                kubernetes {
+                    cloud 'kubernetes'
                 }
+            }
+            steps {
+                sh 'echo hello'
             }
         }
     }
