@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Deploy Kubernetes') {
             steps {
-                withKubeConfig([credentialsId: 'kubernetes', serverUrl: 'https://k3d-silveira-server-0:6443']) {
+                withKubeConfig([credentialsId: 'kube-config', serverUrl: 'https://k3d-silveira-server-0:6443']) {
                     sh 'kubectl apply -f ./k8s'
                 }
             }
