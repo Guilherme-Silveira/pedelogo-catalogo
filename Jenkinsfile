@@ -31,6 +31,8 @@ pipeline {
                 }
             }
             steps {
+                sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o /tmp/kubectl'
+                sh 'chmod +x /tmp/kubectl'
                 withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://k3d-silveira-server-0:6443']) {
                     sh '/tmp/kubectl apply -f ./k8s'
                 }
