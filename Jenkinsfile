@@ -31,7 +31,7 @@ pipeline {
                 }
             }
             steps {
-                kubernetesDeploy(configs: '**/k8s/**', kubeconfigId: 'kubeconfig', enableConfigSubstitution: true)
+                kubernetesDeploy(configs: '**/k8s/**', kubeconfigId: 'kubeconfig', enableConfigSubstitution: false)
             }
         }
     }
