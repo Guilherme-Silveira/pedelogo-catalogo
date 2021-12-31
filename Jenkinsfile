@@ -27,7 +27,9 @@ pipeline {
         stage('Deploy Kubernetes') {
             agent any
             steps {
-                sh "kubectl apply -f ./k8s"
+                script {
+                    kubernetesDeploy(configs: "**/k8s/**", kubeconfigId: "kubernetes")
+                }
             }
         }
     }
