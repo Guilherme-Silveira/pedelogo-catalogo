@@ -28,7 +28,7 @@ pipeline {
             agent any
             steps {
                 script {
-                    kubernetesDeploy(configs: "**/k8s/**", kubeconfigId: "kubernetes")
+                    kubernetesDeploy(configs: "./k8s/mongo.yaml", kubeconfigId: "kubernetes")
                 }
             }
         }
