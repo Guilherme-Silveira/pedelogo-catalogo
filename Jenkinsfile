@@ -31,7 +31,8 @@ pipeline {
                 }
             }
             steps {
-                kubernetesDeploy(configs: "**/k8s/**", kubeconfigId: 'kubernetes')
+                //kubernetesDeploy(configs: "**/k8s/**", kubeconfigId: 'kubernetes')
+                sh "kubectl --version"
             }
         }
     }
