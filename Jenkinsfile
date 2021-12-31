@@ -25,11 +25,7 @@ pipeline {
             }
         }
         stage('Deploy Kubernetes') {
-            agent {
-                kubernetes {
-                    cloud 'kubernetes'
-                }
-            }
+            agent any
             steps {
                 sh "kubectl apply -f ./k8s"
             }
