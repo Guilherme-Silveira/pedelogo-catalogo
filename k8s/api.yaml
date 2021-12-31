@@ -28,7 +28,7 @@ spec:
           - name: Mongo__User
             value: mongouser
 ---
-apiVersion: v1
+apiVersion: apps/v1
 kind: Service
 metadata:
   name: api-service
