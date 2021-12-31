@@ -14,10 +14,7 @@ spec:
       containers:
       - name: api
         image: guisilveira/pedelogo-catalogo
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        resources: {}
         ports:
         - containerPort: 80
         env:

@@ -14,10 +14,7 @@ spec:
       containers:
       - name: mongodb
         image: mongo:4.2.8
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        resources: {}
         ports:
         - containerPort: 27017
         env:
