@@ -25,13 +25,10 @@ pipeline {
             }
         }
         stage('Deploy Kubernetes') {
-            agent {
-                kubernetes {
-                    cloud 'kubernetes'
-                }
-            }
             steps {
-                kubernetesDeploy(configs: "**/k8s/**", kubeconfigId: 'kubernetes')
+                withKubeConfig([credentialsId: 'kubernetes', serverUrl: 'https://k3d-silveira-server-0:6443']) {
+                    sh 'kubectl apply -f ./k8s'
+                }
             }
         }
     }
