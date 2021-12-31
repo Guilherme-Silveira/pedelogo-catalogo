@@ -31,7 +31,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo hello'
+                kubernetesDeploy(configs: "**/k8s/**", kubeconfigId: 'kubeconfig')
             }
         }
     }
