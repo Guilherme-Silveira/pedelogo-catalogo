@@ -25,9 +25,14 @@ pipeline {
             }
         }
         stage('Deploy Kubernetes') {
+            agent {
+                kubernetes {
+                    cloud 'kubernetes'
+                }
+            }
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://k3d-silveira-server-0:6443']) {
-                    sh 'kubectl apply -f ./k8s'
+                    sh '/tmp/kubectl apply -f ./k8s'
                 }
             }
         }
