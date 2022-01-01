@@ -25,26 +25,9 @@ pipeline {
             }
         }
         stage('Deploy Kubernetes') {
-            agent {
-                kubernetes {
-                    yaml '''
-                        apiVersion: v1
-                        kind: Pod
-                        spec:
-                            containers:
-                            - name: slave-k8s
-                              image: guisilveira/slave-k8s
-                              command: 
-                                - cat
-                              tty: true
-                    '''
-                }
-            }
             steps {
-                container('slave-k8s') {
-                    withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://k3d-silveira-server-0:6443']) {
-                        sh 'kubectl apply -f ./k8s'
-                    }
+                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://k3d-silveira-server-0:6443']) {
+                    sh 'kubectl apply -f ./k8s'
                 }
             }
         }
