@@ -41,10 +41,9 @@ pipeline {
                 }
             }
             steps {
-                container('slave-k8s') {
                     withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://k3d-silveira-server-0:6443']) {
                         sh 'kubectl apply -f ./k8s'
-                    }
+                    
                 }
             }
         }
